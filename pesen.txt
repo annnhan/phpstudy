@@ -1,0 +1,6 @@
+name:韩安;age:29;sex:男
+name:喵喵;age:26;sex:女
+name:张三;age:82;sex:男
+name:yoyo;age:14;sex:女
+name:美女;age:22;sex:女
+
