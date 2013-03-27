@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>ajax</title>
+    <script>
+    var xhr = new XMLHttpRequest();
+    window.onload = function () {
+        $ = function (a) {
+           return document.getElementById(a);
+        } ;
+        $('btn').onclick = function () {
+            var name = $('name').value,
+                age = $('age').value,
+                sex = $('sex').value;
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState==4 && xhr.status == 200) {
+                    var r = eval(xhr.responseText),
+                    str = '';
+                    for (var i = 0, len = r.length; i<len; i++) {
+                        str += '<p>name:'+ r[i].name + ', age:'+ r[i].age + ', sex:'+ r[i].sex + ', id:' + r[i].id + '</P>'
+                    }
+                    $('d').innerHTML = str;
+                }
+            }
+            xhr.open('get', 'ajax.php?name='+name, true);
+            xhr.send();
+        }
+    }
+    </script>
+</head>
+<body>
+
+    name:<input type="text" name="name" id="name"/>
+    age:<input type="text" name="age" id="age"/>
+    sex:<input type="text" name="sex" id="sex"/>
+    <input type="button" value="go" id="btn"/>
+    <div id="d"></div>
+</body>
+</html>
